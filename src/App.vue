@@ -22,4 +22,7 @@ export default  {
       background-color: unset;
     }
   }
+  .el-loading-mask {
+    background-color: #383f48 !important;
+  }
 </style>

@@ -9,15 +9,13 @@
     <div id="main-wrapper">
       <topbar></topbar>
       <left-sidebar></left-sidebar>
-      <app-main></app-main>
+      <app-main />
     </div>
   </div>
 </template>
 
 <script>
-import { Topbar, LeftSidebar, AppMain } from './components'
-import ResizeMixin from './mixin/ResizeHandler'
-import { mapState } from 'vuex'
+import { Topbar, LeftSidebar, AppMain} from './components'
 
 export default {
   name: 'Layout',
@@ -26,7 +24,6 @@ export default {
     LeftSidebar,
     AppMain
   },
-  mixins: [ResizeMixin],
   created: function(){
       $(function () {
         $('#sidebarnav').metisMenu();
@@ -106,21 +103,6 @@ export default {
 
   },
   computed: {
-    ...mapState({
-      sidebar: state => state.app.sidebar,
-      device: state => state.app.device,
-      showSettings: state => state.settings.showSettings,
-      needTagsView: state => state.settings.tagsView,
-      fixedHeader: state => state.settings.fixedHeader
-    }),
-    classObj() {
-      return {
-        hideSidebar: !this.sidebar.opened,
-        openSidebar: this.sidebar.opened,
-        withoutAnimation: this.sidebar.withoutAnimation,
-        mobile: this.device === 'mobile'
-      }
-    }
   },
   methods: {
     handleClickOutside() {
